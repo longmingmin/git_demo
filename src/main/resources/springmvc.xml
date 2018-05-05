@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- 扫描controller -->
+	 <context:component-scan base-package="com.sourong.product.controller"></context:component-scan>
+	<!--<context:component-scan base-package="com.sourong.adviser.controller"></context:component-scan>-->
+	<!-- 静态资源处理 -->
+	<mvc:default-servlet-handler/>
+	<!-- 优先选用这种，可以具体指定要放行的资源 -->
+	<!-- <mvc:resources location="/**" mapping="/**"></mvc:resources> -->
+	
+	<!-- 显示加载注解bean处理对象 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">  
+			    	<!-- 解决@ResponseBody中文乱码 -->  
+				  	<bean class="org.springframework.http.converter.StringHttpMessageConverter">  
+				    <property name="supportedMediaTypes" value = "text/html;charset=UTF-8" />  
+				  </bean>  
+		</mvc:message-converters> 
+	</mvc:annotation-driven>
+	
+	
+	<!-- 配置文件上传解析器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<!-- 指定所上传文件的总大小不能超过5000KB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->
+            <property name="maxUploadSize" value="5000000" />
+            <property name="maxInMemorySize" value="4096"/>
+			<property name="defaultEncoding" value="utf-8" />
+		
+      </bean>
+	
+	
+	
+	<!-- 视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	
+	<!-- <mvc:interceptors>
+		<mvc:interceptor>
+		拦截请求的路径。要拦截所有必需配置成/**
+		<mvc:mapping path="/**"/>
+			<bean  class="com.sourong.login.Interceptor.LoginInterceptor"></bean>
+		
+		</mvc:interceptor>
+	
+	
+	</mvc:interceptors> -->
+
+</beans>

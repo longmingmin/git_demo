@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 下划线性和驼峰性互转 -->
+	<settings>  
+		  <!-- 选用log4j2做为mybatis的日志主键 -->
+		  <setting name="logImpl" value="LOG4J2"/> 
+          <setting name="mapUnderscoreToCamelCase" value="true" /> 
+          <!-- 开启二级缓存 --> 
+          <setting name="cacheEnabled" value="false"/>
+     </settings> 
+     
+     <!-- 定义别名 -->
+     <!--  <typeAliases>
+     	<typeAlias type="com.sourong.models.model.Models" alias="Models"/>
+     	<typeAlias type="com.sourong.brand.model.Brand" alias="Brand"/>
+     	
+     </typeAliases> -->
+	<!-- <mappers>
+		<mapper class="com/sourong/modesl/dao/impl/modelsMapper.xml"/>
+		<mapper class="com/sourong/brand/dao/impl/brandMapper.xml"/>
+	</mappers -->
+
+
+</configuration>
