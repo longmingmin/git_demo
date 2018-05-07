@@ -1,4 +1,4 @@
-package com.sourong.product.service;
+package com.sourong.product.service.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sourong.product.dao.ProductVoMapper;
 import com.sourong.product.domain.ProductVo;
+import com.sourong.product.service.IProductService;
 
 @Service
 @Transactional
