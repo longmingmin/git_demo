@@ -1,4 +1,4 @@
-package com.sourong.product.controller;
+package com.sourong.product.control;
 
 import java.util.List;
 
